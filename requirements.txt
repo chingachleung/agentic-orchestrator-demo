@@ -1,0 +1,3 @@
+scikit-learn>=1.3
+# Optional, only required if you activate LLMIntentClassifier:
+# anthropic>=0.30
