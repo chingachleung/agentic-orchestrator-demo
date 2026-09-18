@@ -1,5 +1,7 @@
 # agentic-orchestrator-demo
 
+[![tests](https://github.com/chingachleung/agentic-orchestrator-demo/actions/workflows/tests.yml/badge.svg)](https://github.com/chingachleung/agentic-orchestrator-demo/actions/workflows/tests.yml)
+
 A small, runnable multi-agent orchestration system: an orchestrator classifies
 each incoming message, routes it to the right specialist agent, lets that
 agent call backend tools to ground its answer in real state, and passes every
@@ -51,6 +53,34 @@ python examples/run_demo.py
 ```
 
 No API key needed for the default run.
+
+### Example output
+
+```
+user: I have an issue
+  -> routed_to=tech_support confidence=0.58 guardrail_passed=True
+  agent[tech_support_agent]: I see you're on Basic Internet — is the issue with your internet connection or a specific device?
+  tool_calls: ['lookup_account']
+
+user: why is my bill so high
+  -> routed_to=billing_inquiry confidence=1.00 guardrail_passed=True
+  agent[billing_agent]: Your current balance due is $118.20.
+  tool_calls: ['check_billing_status']
+
+user: what plan am I on
+  -> routed_to=account_management confidence=1.00 guardrail_passed=True
+  agent[account_agent]: Your account is on the Basic Internet plan and is currently past_due.
+  tool_calls: ['lookup_account']
+
+user: asdkjf random gibberish
+  -> routed_to=unknown confidence=0.00 guardrail_passed=True
+  agent[fallback_agent]: I want to make sure I route you correctly — could you rephrase that?
+```
+
+Note the third turn: it's routed to `account_management`, and that agent's
+tool call to `lookup_account` is what surfaces the past-due status baked
+into the mocked account data — a concrete example of the "ground the answer
+in real state via a tool call" pattern, not a canned string.
 
 To try the LLM-backed classifier instead:
 
