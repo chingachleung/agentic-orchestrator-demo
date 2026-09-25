@@ -4,7 +4,7 @@ hops.
 
 This is the piece a production system's "steering agent" plays: classify →
 dispatch → guardrail → respond, with everything routed through one shared
-Session so downstream agents don't need to re-derive context.
+Session so downstream agents don't need to re-derive context to reduce latency.
 """
 from __future__ import annotations
 
