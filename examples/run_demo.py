@@ -21,7 +21,7 @@ INTENT_EXAMPLES = {
     "billing_inquiry": [
         "why is my bill so high",
         "I want to pay my balance",
-        "how much do I owe",
+        "how much do I owe?",
         "there's a charge I don't recognize",
     ],
     "tech_support": [
