@@ -15,7 +15,7 @@ from src import (
 
 INTENT_EXAMPLES = {
     "billing_inquiry": ["why is my bill so high", "how much do I owe", "I want to pay my balance"],
-    "tech_support": ["my internet is down", "the wifi keeps disconnecting", "I have an issue", "I have something"],
+    "tech_support": ["my internet is down", "wifi keeps disconnecting", "I have an issue", "I have something"],
     "account_management": ["what plan am I on", "update my account info"],
 }
 
